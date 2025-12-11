@@ -43,7 +43,17 @@ export default function HomePage() {
         </div>
         <div>
           <label>Interval</label><br />
-          <select value={interval} onChange={(e) => setInterval(e.target.value)} style={{ padding: 8 }}>
+          <select
+            value={interval}
+            onChange={(e) => setInterval(e.target.value)}
+            style={{
+              padding: 8,
+              backgroundColor: "#2b2b2b",
+              color: "#ffffff",
+              border: "1px solid #444",
+              borderRadius: 4
+            }}
+          >
             <option value="1m">1m</option>
             <option value="5m">5m</option>
             <option value="15m">15m</option>
@@ -78,22 +88,6 @@ export default function HomePage() {
             <li>Stop Loss: {result.signal.stopLoss.toFixed(2)}</li>
             <li>Take Profit: {result.signal.takeProfit.toFixed(2)}</li>
           </ul>
-          <h3>Indicators</h3>
-          <ul>
-            <li>EMA50: {result.indicators.ema50?.toFixed(2) ?? "N/A"}</li>
-            <li>EMA200: {result.indicators.ema200?.toFixed(2) ?? "N/A"}</li>
-            <li>RSI14: {result.indicators.rsi14?.toFixed(2) ?? "N/A"}</li>
-            <li>MACD: {result.indicators.macd.macd?.toFixed(4) ?? "N/A"} | Signal: {result.indicators.macd.signal?.toFixed(4) ?? "N/A"} | Hist: {result.indicators.macd.histogram?.toFixed(4) ?? "N/A"}</li>
-            <li>ATR14: {result.indicators.atr14?.toFixed(4) ?? "N/A"}</li>
-          </ul>
-          {!!result.signal.reasons.length && (
-            <>
-              <h3>Reasons</h3>
-              <ul>
-                {result.signal.reasons.map((r, i) => <li key={i}>{r}</li>)}
-              </ul>
-            </>
-          )}
         </section>
       )}
     </main>
